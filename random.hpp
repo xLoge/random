@@ -118,11 +118,21 @@ public:
 
 	static double rand_double(double _MIN = 0., double _MAX = std::numeric_limits<double>::max())
 	{
-		return (static_cast<double>(rand32()) / static_cast<double>(std::numeric_limits<uint32_t>::max())) * (_MAX - _MIN);
+		return (static_cast<double>(rand_in_range(0, std::numeric_limits<uint32_t>::max())) / static_cast<double>(std::numeric_limits<uint32_t>::max())) * (_MAX - _MIN);
+	}
+
+	static double fast_rand_double(double _MIN = 0., double _MAX = std::numeric_limits<double>::max())
+	{
+		return (static_cast<double>(fast_rand_in_range(0, std::numeric_limits<uint32_t>::max())) / static_cast<double>(std::numeric_limits<uint32_t>::max())) * (_MAX - _MIN);
 	}
 
 	static float rand_float(float _MIN = 0.F, float _MAX = std::numeric_limits<float>::max())
 	{
 		return (static_cast<float>(rand_double(_MIN, _MAX)));
+	}
+
+	static float fast_rand_float(float _MIN = 0.F, float _MAX = std::numeric_limits<float>::max())
+	{
+		return (static_cast<float>(fast_rand_double(_MIN, _MAX)));
 	}
 };
