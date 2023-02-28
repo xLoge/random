@@ -115,4 +115,14 @@ public:
 		return dist(mt);
 	}
 #endif
+
+	static double rand_double(double _MIN = 0., double _MAX = std::numeric_limits<double>::max())
+	{
+		return (static_cast<double>(rand32()) / static_cast<double>(std::numeric_limits<uint32_t>::max())) * (_MAX - _MIN);
+	}
+
+	static float rand_float(float _MIN = 0.F, float _MAX = std::numeric_limits<float>::max())
+	{
+		return (static_cast<float>(rand_double(_MIN, _MAX)));
+	}
 };
